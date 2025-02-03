@@ -28,5 +28,9 @@
   "peerDependencies": {
     "discord-hybrid-sharding": ">= 2.2.4",
     "discord.js": ">= 14.17.3"
+  },
+  "engineStrict": true,
+  "engines": {
+    "node": ">=18.0.0"
   }
 }
