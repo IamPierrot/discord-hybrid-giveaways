@@ -1,0 +1,32 @@
+{
+  "name": "dicord-hybrid-giveaways",
+  "version": "0.0.1",
+  "description": "Giveaway using with discord hybrid cluster",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup"
+  },
+  "keywords": [],
+  "author": "iampierrot",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^22.13.0",
+    "tsup": "^8.3.6",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.3"
+  },
+  "dependencies": {
+    "deepmerge-ts": "^7.1.4",
+    "discord-hybrid-sharding": "2.2.4",
+    "discord.js": "14.17.3"
+  },
+  "peerDependencies": {
+    "discord-hybrid-sharding": ">= 2.2.4",
+    "discord.js": ">= 14.17.3"
+  }
+}
