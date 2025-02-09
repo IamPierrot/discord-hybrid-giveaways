@@ -1,15 +1,13 @@
-import { ColorResolvable, PermissionResolvable, GuildMember, Awaitable, EmojiIdentifierResolvable, User } from "discord.js";
+import { ColorResolvable, PermissionResolvable, Awaitable, EmojiIdentifierResolvable, User, GuildMember } from "discord.js";
 import { Giveaway } from "../core/Giveaway-[Main]";
 import { GiveawayMessages } from "./GiveawayObject";
 
 export type ExemptMemberFunction = (member: GuildMember, giveaway: Giveaway) => Awaitable<boolean>;
 export interface GiveawaysManagerOptions {
-    forceUpdateEvery?: number;
     endedGiveawaysLifetime?: number;
     default: {
-        botsCanWin?: boolean;
-        exemptPermissions?: PermissionResolvable[];
-        exemptMembers?: ExemptMemberFunction;
+        botsCanWin: boolean;
+        exemptMembers: ExemptMemberFunction;
         embedColor: ColorResolvable;
         embedColorEnd: ColorResolvable;
         reaction: EmojiIdentifierResolvable;
@@ -23,6 +21,8 @@ export interface GiveawayStartOptions {
     hostedBy?: User;
     botsCanWin?: boolean;
     exemptPermissions?: PermissionResolvable[];
+    channelId: string
+    guildId: string;
 }
 export interface GiveawayRerollOptions {
     winnerCount?: number;

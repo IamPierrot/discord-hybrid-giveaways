@@ -31,11 +31,9 @@ export type BonusFunction = (member: GuildMember, giveaway: Giveaway) => Promise
  */
 
 export const DefaultGiveawaysManagerOptions: Required<GiveawaysManagerOptions> = {
-    forceUpdateEvery: DEFAULT_CHECK_INTERVAL,
     endedGiveawaysLifetime: DELETE_DROP_DATA_AFTER,
     default: {
         botsCanWin: false,
-        exemptPermissions: [],
         exemptMembers: () => false,
         embedColor: '#FF0000',
         embedColorEnd: '#000000',

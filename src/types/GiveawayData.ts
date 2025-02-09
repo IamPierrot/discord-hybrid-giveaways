@@ -1,4 +1,4 @@
-import { EmojiIdentifierResolvable, Awaitable, GuildMember } from "discord.js";
+import { Awaitable, GuildMember } from "discord.js";
 import { Snowflake } from "discord.js";
 import { Giveaway } from "../core";
 
@@ -10,9 +10,8 @@ export interface GiveawayData {
     channelId: Snowflake;
     guildId: Snowflake;
     ended: boolean;
-    winnerIds?: Snowflake[];
+    winnerIds: Snowflake[];
     messageId: Snowflake;
-    reaction?: EmojiIdentifierResolvable;
     hostedBy?: string;
 }
 
