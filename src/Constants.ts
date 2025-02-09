@@ -1,11 +1,11 @@
 import { GuildMember } from 'discord.js';
-import { Giveaway } from '../core';
-import { GiveawayMessages, GiveawayRerollOptions, GiveawaysManagerOptions, LastChanceOptions, PauseOptions } from '../types';
+import { Giveaway } from './core';
+import { GiveawayMessages, GiveawayRerollOptions, GiveawaysManagerOptions } from './types';
 
 export const DEFAULT_CHECK_INTERVAL = 15_000;
 export const DELETE_DROP_DATA_AFTER = 6.048e8; // 1 week
 
-export const DefaultGiveawayMessages: Required<GiveawayMessages> = {
+const DefaultGiveawayMessages: Required<GiveawayMessages> = {
     giveaway: '🎉🎉 **GIVEAWAY** 🎉🎉',
     giveawayEnded: '🎉🎉 **GIVEAWAY ENDED** 🎉🎉',
     title: '{prize}',
@@ -17,36 +17,20 @@ export const DefaultGiveawayMessages: Required<GiveawayMessages> = {
     winners: 'Winner(s):',
     endedAt: 'Ended at',
     hostedBy: 'Hosted by: {hostedBy}',
-    winMessage: 'Congratulations, {winners}! You won **{this.prize}**!',
+    winMessage: 'Congratulations, {winners}! You won **{prize}**!',
     timeRemaining: "Time remaining: **{duration}** !",
+    giveawayNoWinner: 'No winner could be determined!',
+    replyWhenNoWinner: true
 };
 
 export type ExemptMembersFunction = (member: GuildMember, giveaway: Giveaway) => Promise<boolean> | boolean;
 
 export type BonusFunction = (member: GuildMember, giveaway: Giveaway) => Promise<number> | number;
-
-export const DefaultLastChanceOption: LastChanceOptions = {
-    enabled: false,
-    content: '⚠️ **LAST CHANCE TO ENTER !** ⚠️',
-    threshold: 10_000,
-    embedColor: '#FF0000'
-};
-
-export const DefaultPauseOptions: PauseOptions = {
-    isPaused: false,
-    content: '⚠️ **THIS GIVEAWAY IS PAUSED !** ⚠️',
-    unpauseAfter: null,
-    embedColor: '#FFFF00',
-    durationAfterPause: null,
-    infiniteDurationText: '`NEVER`'
-};
-
 /**
  * The giveaways manager options.
  */
 
-export const DefaultGiveawaysManagerOptions: GiveawaysManagerOptions = {
-    storage: './giveaways.json',
+export const DefaultGiveawaysManagerOptions: Required<GiveawaysManagerOptions> = {
     forceUpdateEvery: DEFAULT_CHECK_INTERVAL,
     endedGiveawaysLifetime: DELETE_DROP_DATA_AFTER,
     default: {
@@ -56,12 +40,7 @@ export const DefaultGiveawaysManagerOptions: GiveawaysManagerOptions = {
         embedColor: '#FF0000',
         embedColorEnd: '#000000',
         reaction: '🎉',
-        lastChance: {
-            enabled: false,
-            content: '⚠️ **LAST CHANCE TO ENTER !** ⚠️',
-            threshold: 5000,
-            embedColor: '#FF0000'
-        }
+        messages: DefaultGiveawayMessages
     }
 };
 
@@ -70,6 +49,5 @@ export const DefaultGiveawayRerollOptions: GiveawayRerollOptions = {
     messages: {
         congrat: ':tada: New winner(s): {winners}! Congratulations, you won **{this.prize}**!\n{this.messageURL}',
         error: 'No valid participations, no new winner(s) can be chosen!',
-        replyWhenNoWinner: true
     }
 };

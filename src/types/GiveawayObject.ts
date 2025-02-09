@@ -1,5 +1,3 @@
-import { JSONEncodable, APIEmbed, APIActionRowComponent, APIMessageActionRowComponent, APIModalActionRowComponent } from "discord.js";
-
 export interface GiveawayMessages {
     giveaway?: string;
     giveawayEnded?: string;
@@ -14,13 +12,10 @@ export interface GiveawayMessages {
     winners?: string;
     endedAt?: string;
     hostedBy?: string;
+    replyWhenNoWinner?: boolean;
+    giveawayNoWinner?: string;
 }
 export interface MessageObject {
     content?: string;
-    embed?: JSONEncodable<APIEmbed> | APIEmbed;
-    components?: (
-        | JSONEncodable<APIActionRowComponent<APIMessageActionRowComponent | APIModalActionRowComponent>>
-        | APIActionRowComponent<APIMessageActionRowComponent | APIModalActionRowComponent>
-    )[];
     replyToGiveaway?: boolean;
 }

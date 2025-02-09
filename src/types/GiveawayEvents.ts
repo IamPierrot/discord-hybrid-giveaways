@@ -1,11 +1,11 @@
 import { GuildMember, MessageReaction } from "discord.js";
 import { Giveaway } from "../core";
 
-export interface GiveawaysManagerEvents<ExtraData = any> {
-    giveawayDeleted: [Giveaway<ExtraData>];
-    giveawayEnded: [Giveaway<ExtraData>, GuildMember[]];
-    giveawayRerolled: [Giveaway<ExtraData>, GuildMember[]];
-    giveawayReactionAdded: [Giveaway<ExtraData>, GuildMember, MessageReaction];
-    giveawayReactionRemoved: [Giveaway<ExtraData>, GuildMember, MessageReaction];
-    endedGiveawayReactionAdded: [Giveaway<ExtraData>, GuildMember, MessageReaction];
+export interface GiveawaysManagerEvents {
+    giveawayDeleted: [Giveaway];
+    giveawayEnded: [Giveaway, GuildMember[]];
+    giveawayRerolled: [Giveaway, GuildMember[]];
+    giveawayReactionAdded: [Giveaway, GuildMember, MessageReaction];
+    giveawayReactionRemoved: [Giveaway, GuildMember, MessageReaction];
+    endedGiveawayReactionAdded: [Giveaway, GuildMember, MessageReaction];
 }

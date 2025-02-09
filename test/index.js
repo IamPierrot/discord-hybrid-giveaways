@@ -1,9 +1,13 @@
-async function lmao() { 
-    console.log("lmao");
+const { deepmerge, deepmergeCustom } = require("deepmerge-ts");
+
+const test = {
+    name: "test",
+    age: 12
 }
 
-const lmaoString = lmao.toString();
-console.log(lmaoString);
-const lmaoFunction = eval(`(${lmaoString})`);
+const lmao = {
+    name: "lmao",
+    hehe: "hehe"
+}
 
-lmaoFunction(); // This will log "lmao"
+console.log(deepmergeCustom({mergeArrays: false})(test, lmao));
